@@ -1,0 +1,32 @@
+﻿<Application x:Class="CcTimer.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:CcTimer"
+             xmlns:converters="clr-namespace:CcTimer.Converters"
+             xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
+                <!-- Theme setting -->
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Dark.Blue.xaml" />
+
+                <ResourceDictionary>
+                    <Style x:Key="WindowBaseStyle" TargetType="{x:Type mah:MetroWindow}">
+                        <Setter Property="FontFamily" Value="Bahnschrift" />
+                    </Style>
+
+                    <Style x:Key="PopOutWindowStyle" TargetType="{x:Type Window}">
+                        
+                    </Style>
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+            <converters:VisibilityConverter x:Key="VisibilityConverter" />
+            <converters:TimeConverter x:Key="TimeConverter" />
+            <FontFamily x:Key="Oxanium">pack://application:,,,/Resources/#Oxanium</FontFamily>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

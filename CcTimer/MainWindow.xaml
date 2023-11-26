@@ -1,0 +1,39 @@
+﻿<mah:MetroWindow x:Class="CcTimer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:CcTimer"
+        xmlns:views="clr-namespace:CcTimer.Views"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Title="{Binding VersionNumber, StringFormat=CCTimer — {0}}" Height="205" Width="320"
+        Closed="OnMainWindowClosed"
+        Style="{StaticResource WindowBaseStyle}"
+        mah:DialogParticipation.Register="{Binding}">
+    <Border Padding="5">
+        <Grid>
+            <StackPanel>
+                <views:TimerView DataContext="{Binding TimerVm}" Margin="0 0 0 10" />
+                <StackPanel Orientation="Horizontal"
+                            Visibility="{Binding CurrentState.IsAttached, Converter={StaticResource VisibilityConverter}, ConverterParameter=TrueToCollapsed}">
+                    <TextBlock Text="⏹" Foreground="Red" FontSize="26" Margin="0 0 6 0" Width="40" TextAlignment="Center" />
+                    <TextBlock Text="No game running" FontSize="22" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Visibility="{Binding IsInGame, Converter={StaticResource VisibilityConverter}}">
+                    <TextBlock Text="▶" Foreground="LightGreen" FontSize="26" Margin="0 0 6 0" Width="40" TextAlignment="Center" />
+                    <TextBlock Text="Tracking game — in game" FontSize="22" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Visibility="{Binding IsInMenu, Converter={StaticResource VisibilityConverter}}">
+                    <TextBlock Text="🔶" Foreground="Orange" FontSize="26" Margin="0 0 6 0" Width="40" TextAlignment="Center" />
+                    <TextBlock Text="Tracking game — in menu" FontSize="22" VerticalAlignment="Center" />
+                </StackPanel>
+                
+                <Button Content="Open in overlay" ToolTip="Open the timer in a transparent window that you can put on top of your game"
+                        Margin="0 10 0 0"
+                        Click="OnPopOutClicked" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</mah:MetroWindow>
