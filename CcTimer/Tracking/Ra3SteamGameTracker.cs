@@ -8,8 +8,8 @@ namespace CcTimer.Tracking;
 /// </summary>
 public class Ra3SteamGameTracker : ProcessTracker, IGameTracker
 {
-    private static readonly PointerPath ElapsedTimePointerPath = "RA3_1.12.game+001FEBE8,0";
-    private static readonly PointerPath IsInGamePointerPath = "RA3_1.12.game+001FEBE8,-D";
+    private static readonly PointerPath ElapsedTimePointerPath = "RA3_1.12.game+8D8C78";
+    private static readonly PointerPath IsInGamePointerPath = "RA3_1.12.game+8D7514";
     
     /// <summary>
     /// Builds the tracker.

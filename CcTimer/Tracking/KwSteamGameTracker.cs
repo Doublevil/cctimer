@@ -8,8 +8,8 @@ namespace CcTimer.Tracking;
 /// </summary>
 public class KwSteamGameTracker : ProcessTracker, IGameTracker
 {
-    private static readonly PointerPath ElapsedTimePointerPath = "cnc3ep1.dat+7F0A18";
-    private static readonly PointerPath IsInGamePointerPath = "cnc3ep1.dat+7EC080";
+    private static readonly PointerPath ElapsedTimePointerPath = "cnc3ep1.dat+7FB1B0";
+    private static readonly PointerPath IsInGamePointerPath = "cnc3ep1.dat+7F6818";
     
     /// <summary>
     /// Builds the tracker.
