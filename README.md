@@ -21,7 +21,7 @@ The currently supported games are the following:
 
 ## Installation
 
-1. Download the zip of the latest version in the Releases here on GitHub.
+1. Download one of the zip files of [the latest version](https://github.com/Doublevil/cctimer/releases/latest) in the Releases here on GitHub.
 2. Extract the zip to any location.
 3. Run `CCTimer.exe`. The main window should appear after a few seconds.
 
