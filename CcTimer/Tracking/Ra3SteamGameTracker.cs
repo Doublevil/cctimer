@@ -3,18 +3,10 @@ using MindControl;
 
 namespace CcTimer.Tracking;
 
-/// <summary>
-/// Tracker for Command & Conquer: Red Alert 3 (Steam version).
-/// </summary>
-public class Ra3SteamGameTracker : ProcessTracker, IGameTracker
+public abstract class Ra3GameTracker(string processName) : ProcessTracker(processName), IGameTracker
 {
-    private static readonly PointerPath ElapsedTimePointerPath = "RA3_1.12.game+8D8C78";
-    private static readonly PointerPath IsInGamePointerPath = "RA3_1.12.game+8D7514";
-    
-    /// <summary>
-    /// Builds the tracker.
-    /// </summary>
-    public Ra3SteamGameTracker() : base("ra3_1.12.game") { }
+    protected abstract PointerPath ElapsedTimePointerPath { get; }
+    protected abstract PointerPath IsInGamePointerPath { get; }
 
     /// <summary>
     /// Gets the current state of the tracked game.
@@ -25,15 +17,33 @@ public class Ra3SteamGameTracker : ProcessTracker, IGameTracker
         if (processMemory == null)
             return GameState.Detached;
 
-        bool isInGame = processMemory.ReadInt(IsInGamePointerPath).GetValueOrDefault() > 0;
+        bool isInGame = processMemory.Read<int>(IsInGamePointerPath).ValueOrDefault() > 0;
         
         return new GameState
         {
             IsAttached = true,
             IsInGame = isInGame,
             InGameTime = isInGame ?
-                TimeSpan.FromMilliseconds(processMemory.ReadInt(ElapsedTimePointerPath).GetValueOrDefault())
+                TimeSpan.FromMilliseconds(processMemory.Read<int>(ElapsedTimePointerPath).ValueOrDefault())
                 : null
         };
     }
+}
+
+/// <summary>
+/// Tracker for Command & Conquer: Red Alert 3 version 1.12 (Steam version).
+/// </summary>
+public class Ra3V112SteamGameTracker() : Ra3GameTracker("ra3_1.12.game")
+{
+    protected override PointerPath ElapsedTimePointerPath => "RA3_1.12.game+8D8C78";
+    protected override PointerPath IsInGamePointerPath => "RA3_1.12.game+8D7AD8";
+}
+
+/// <summary>
+/// Tracker for Command & Conquer: Red Alert 3 version 1.13 (Steam version).
+/// </summary>
+public class Ra3V113SteamGameTracker() : Ra3GameTracker("ra3_1.13.game")
+{
+    protected override PointerPath ElapsedTimePointerPath => "RA3_1.13.game+8E0F98";
+    protected override PointerPath IsInGamePointerPath => "RA3_1.13.game+8B6040";
 }

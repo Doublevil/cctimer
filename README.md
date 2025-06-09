@@ -7,8 +7,16 @@ This application for Windows allows you to see an accurate in-game timer for som
 ## Supported games
 
 The currently supported games are the following:
-- **C&C3: Kane's Wrath** (Steam version)
+- **C&C3: Kane's Wrath**
+  - Version 1.02 (Steam version)
+  - Version 1.03 (Steam version)
+  - Supports the 4K patch and Tacitus
+
+
 - **C&C Red Alert 3** (Steam version)
+  - Version 1.12 (Steam version)
+  - Version 1.13 (Steam version)
+  - Supports Tacitus
 
 ## Features
 
@@ -41,10 +49,10 @@ It works on replays as well as on live games, whether you are an active player o
 As of now, this tool should be considered safe to use for multiplayer games. We believe it does not allow you to gain any exclusive advantage. There has been no known discussion or controversy about it.
 
 ### What's the advantage when compared to any other timer software?
-The timer synchronizes with the in-game clock. It will be started automatically when a game starts, stopped when a game ends, will properly pause when the game is not running, slow down when the game lags, accelerate on fast-forward in replays, etc.
+The timer synchronizes with the in-game clock. It will be started automatically when a game starts, stopped when a game ends, will properly pause when the game is not running, slow down when the game lags, speed up on fast-forward in replays, etc.
 
 ### How does it work? Is this a mod?
-This is not a mod. The game is not modified in any way. The timer tool will only read the memory of the process running the game. It's like a probe running alongside with the game.
+This is not a mod. The game is not modified in any way. The timer tool will only read the memory of the process running the game. It's like a probe running alongside the game.
 
 ## Credits
 

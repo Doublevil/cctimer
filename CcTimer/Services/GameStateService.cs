@@ -1,14 +1,12 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using CcTimer.Tracking;
-using MindControl;
+﻿using CcTimer.Tracking;
 
 namespace CcTimer.Services;
 
 public class GameStateService
 {
     private readonly IGameTracker[] _trackers = {
-        new Ra3SteamGameTracker(),
+        new Ra3V112SteamGameTracker(),
+        new Ra3V113SteamGameTracker(),
         new KwSteamGameTracker()
     };
 

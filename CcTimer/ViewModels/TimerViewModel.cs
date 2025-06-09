@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using CcTimer.Tracking;
+﻿using CcTimer.Tracking;
 using PropertyChanged.SourceGenerator;
 
 namespace CcTimer.ViewModels;

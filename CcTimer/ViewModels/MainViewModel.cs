@@ -16,8 +16,7 @@ public partial class MainViewModel
 {
     private readonly IDialogCoordinator _dialogCoordinator;
     private readonly GameStateService _gameStateService;
-    private readonly DispatcherTimer _refreshTimer;
-    
+
     /// <summary>
     /// Gets or sets the current game state.
     /// </summary>
@@ -36,12 +35,12 @@ public partial class MainViewModel
     /// <summary>
     /// Gets a boolean indicating if the game is tracked but is currently in a menu.
     /// </summary>
-    public bool IsInMenu => CurrentState.IsAttached && !CurrentState.IsInGame;
+    public bool IsInMenu => CurrentState is { IsAttached: true, IsInGame: false };
 
     /// <summary>
     /// Gets a boolean indicating if the game is tracked and in game.
     /// </summary>
-    public bool IsInGame => CurrentState.IsAttached && CurrentState.IsInGame;
+    public bool IsInGame => CurrentState is { IsAttached: true, IsInGame: true };
 
     public MainViewModel(GameStateService gameStateService, IDialogCoordinator dialogCoordinator)
     {
@@ -51,9 +50,9 @@ public partial class MainViewModel
 
         // Use a refresh rate superior to the game's 30FPS. If we set it to 30, it will miss some frames
         // (because of timer precision) and the timer will feel laggy.
-        _refreshTimer = new DispatcherTimer(TimeSpan.FromSeconds(1f / 60), DispatcherPriority.Normal, OnRefreshTick,
+        var refreshTimer = new DispatcherTimer(TimeSpan.FromSeconds(1f / 60), DispatcherPriority.Normal, OnRefreshTick,
             Application.Current.Dispatcher);
-        _refreshTimer.Start();
+        refreshTimer.Start();
     }
 
     /// <summary>
